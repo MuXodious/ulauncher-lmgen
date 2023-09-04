@@ -1,12 +1,26 @@
-# [ULauncher](https://ulauncher.io/) Chat GPT Extension
+# [ULauncher](https://ulauncher.io/) Ooba API Extension
 
-> Disclaimer: Not affiliated with OpenAI
+>Highly experimental and not ready for use!
 
-This extension enables you to use ChatGPT custom system prompts to create your own custom assistant
 
-![Screen shot](images/screenshot.png)
 
-Feel free to fork for a more domain specific assistant
+Run [Oobabooga WebUI](https://github.com/oobabooga/text-generation-webui) with "--api" option. 
+
+Launch Ulauncher via terminal with following options.
+
+```
+ulauncher --no-extensions --dev -v
+```
+
+Enable the extension via following commad. Edit absolute paths to match your system. 
+
+```
+VERBOSE=1 ULAUNCHER_WS_API=ws://127.0.0.1:5054/com.github.muxodious.ulauncher-lmgen PYTHONPATH=/usr/lib/python3.12/site-packages /usr/bin/python3 /home/USER/.local/share/ulauncher/extensions/com.github.muxodious.ulauncher-lmgen/main.py
+```
+
+
+
+
 
 ## Install
 
