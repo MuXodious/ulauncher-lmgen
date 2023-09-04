@@ -29,12 +29,12 @@ def wrap_text(text, max_w):
 
 class GPTExtension(Extension):
     """
-    Ulauncher extension to generate text using GPT-3
+    Ulauncher extension to generate text using Oobabooga WebUI API
     """
 
     def __init__(self):
         super(GPTExtension, self).__init__()
-        logger.info('GPT-3 extension started')
+        logger.info('LMGen extension started')
         self.subscribe(KeywordQueryEvent, KeywordQueryEventListener())
 
 
@@ -44,6 +44,7 @@ class KeywordQueryEventListener(EventListener):
     """
 
     def on_event(self, event, extension):
+        # Oobabooga API endpoint
         endpoint = "http://localhost:5000/api/v1/generate"
 
         logger.info('Processing user preferences')
@@ -59,9 +60,7 @@ class KeywordQueryEventListener(EventListener):
                                     on_enter=DoNothingAction())
             ])
 
-        # Create POST request
-
-
+        # Create API request form (see:https://github.com/oobabooga/text-generation-webui/blob/main/api-examples/api-example.py)
         body = {
             'prompt': search_term,
             'max_new_tokens': 46,
@@ -86,12 +85,10 @@ class KeywordQueryEventListener(EventListener):
         logger.info('Request succeeded')
         logger.info('Response: %s', str(response))
 
-        # Get response
-        # Choice schema
-        #  { message: Message, finish_reason: string, index: number }
-        # Message schema
-        #  { role: string, content: string }
-
+        # Get response TBD
+        # Choice schema TBD
+        # Message schema TBD
+        
         response = response.json()
         choices = response.json()['results'][0]['text']
         # pylint: disable=broad-except
